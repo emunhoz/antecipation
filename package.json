@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Antecipation value",
   "author": "Eder Munhoz dos Santos",
-  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.7.7",
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
@@ -39,9 +38,5 @@
     "@babel/polyfill": "^7.7.0",
     "core-js": "3"
   },
-  "browserslist": [
-    "> 1%",
-    "not ie <= 9",
-    "last 2 versions"
-  ]
+  "browserslist": ["> 1%", "not ie <= 9", "last 2 versions"]
 }
