@@ -1,11 +1,9 @@
-function formatCurrency(number) {
-  if (Number.isNaN(parseFloat(number)) && Number.isNaN(number - 0)) return '';
+export default function formatCurrency (value) {
+  const val = +value.replace(/\D+/g, '') / 100;
 
   return new Intl.NumberFormat('pt-BR', {
     style: 'currency',
     currency: 'BRL',
-    minimumFractionDigits: 2,
-  }).format(number);
-}
+  }).format(val);
+};
 
-export default formatCurrency;
