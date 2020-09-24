@@ -13,7 +13,6 @@
   --text-light: #cecece;
   --text-secondary: #3d75bb;
   --secondary-bg-color: #f7f9fa;
-  --secondary-text: #3d75bb;
   --border-input-focus: #66AFE9;
   --border-input: #DDE6E9;
   --secondary-text-light: #5d9cec;
@@ -54,4 +53,57 @@ input {
 .main-title {
   font-size: var(--font-size-lg);
   margin-bottom: 22px;
+}
+
+.wrapper {
+  padding: 41px 56px 44px;
+}
+
+.forecast-values {
+  background: var(--secondary-bg-color);
+  padding: 41px 56px 44px;
+  min-width: 231px;
+  font-style: italic;
+}
+
+.forecast-values .title {
+  font-size: var(--font-size-md);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  border-bottom: 1px solid #5d9cec52;
+  margin-bottom: 16px;
+  padding-bottom: 6px;
+}
+
+.forecast-values ul {
+  list-style: none;
+  color: var(--secondary-text-light);
+}
+
+.forecast-values ul li {
+  list-style: none;
+  color: var(--secondary-text-light);
+  font-size: var(--font-size-md);
+  line-height: 44px;
+  font-weight: lighter;
+}
+
+.forecast-values ul li span {
+  font-weight: bold;
+}
+
+@media only screen and (min-width: 600px) {
+  .boxs {
+    display: flex;
+    height: 389px;
+  }
+  .forecast-values {
+    padding: 83px 35px;
+  }
+}
+
+@media only screen and (max-width: 390px) {
+  .wrapper, .forecast-values {
+    padding: 20px;
+  }
 }
