@@ -1,4 +1,4 @@
-import { moneyMaskInput } from '../../utils/formatCurrency'
+import formatCurrency from '../../utils/formatCurrency'
 
 export default class BaseInput extends HTMLElement {
   constructor() {
@@ -34,7 +34,7 @@ export default class BaseInput extends HTMLElement {
     this.render();
 
     let inputWithMaskMoney = this.shadow.querySelector("[data-mask='money']");
-    inputWithMaskMoney && inputWithMaskMoney.addEventListener('input', e => e.target.value = moneyMaskInput(e.target.value), false);
+    inputWithMaskMoney && inputWithMaskMoney.addEventListener('input', e => e.target.value = formatCurrency(e.target.value), false);
   }
 
   render() {
