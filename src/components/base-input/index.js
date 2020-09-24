@@ -1,3 +1,5 @@
+import { moneyMaskInput } from '../../utils/formatCurrency'
+
 export default class BaseInput extends HTMLElement {
   constructor() {
     super();
@@ -16,30 +18,30 @@ export default class BaseInput extends HTMLElement {
     return this.getAttribute('type')
   }
 
-  set label(val) {
-    this.setAttribute('label', val)
+  get mask() {
+    return this.getAttribute('mask') || '';
   }
 
-  set type(val) {
-    this.setAttribute('label', val)
+  get max() {
+    return this.getAttribute('max');
   }
 
-  static get observedAttributes() {
-    return ["label", "type"];
-  }
-
-  attributeChangedCallback(prop, oldVal, newVal) {
-    if (prop === "label") {
-      this.render();
-    }
-  }
+  get maxLength() {
+    return this.getAttribute('maxLength');
+  }  
 
   connectedCallback() {
     this.render();
+
+    let inputWithMaskMoney = this.shadow.querySelector("[data-mask='money']");
+    inputWithMaskMoney && inputWithMaskMoney.addEventListener('input', e => e.target.value = moneyMaskInput(e.target.value), false);
   }
 
   render() {
-    const { label, type, helpMessage } = this
+    const { label, type, helpMessage, mask, max, maxLength } = this
+
+    const maxAttr = max && `max="${max}"` || '';
+    const maxLengthAttr = maxLength && `maxlength="${maxLength}"` || '';
 
     this.shadow.innerHTML = `
     <style>
@@ -71,7 +73,7 @@ export default class BaseInput extends HTMLElement {
     </style>
     <div class="base-input">
       <label for="${label}">${label}</label>
-      <input type="${type}" id="${label}" />
+      <input type="${type}" ${maxAttr} ${maxLengthAttr} data-mask="${mask}" id="${label}" />
       <small class="help-message">${helpMessage}</small>
     </div>
     `
