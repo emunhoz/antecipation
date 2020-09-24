@@ -68,7 +68,7 @@ export default class BaseInput extends HTMLElement {
       .base-input .help-message {
         font-weight: bold;
         font-size: var(--font-size-sm);
-        color: var(--text-light);
+        color: var(--text);
       }
     </style>
     <div class="base-input">
