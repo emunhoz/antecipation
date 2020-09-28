@@ -8,5 +8,10 @@
       }
     ]
   ],
-  "plugins": ["@babel/plugin-syntax-dynamic-import"]
+  "plugins": [
+    ["@babel/plugin-syntax-dynamic-import"],
+    ["babel-plugin-transform-builtin-classes", {
+      "globals": ["Array", "Error", "HTMLElement"]
+    }]
+  ]
 }
