@@ -1,23 +1,41 @@
 export default class LoadingEl extends HTMLElement {
   constructor() {
-    super();
-    this.shadow = this.attachShadow({ mode: "open" });
+    super()
+    this.shadow = this.attachShadow({ mode: "open" })
     this._loading = false
+    this._message = 'Buscando...'
   }
 
   connectedCallback() {
-    this.render();
+    this.render()
 
     this.addEventListener('loading', (e) => {
       this._loading = e.detail
       this.render()
+      this.setInitialLoadingMessage()
     })
+  }
+
+  slowConnectionMessage() {
+    setTimeout(() => {
+      this._message = 'Conexão lenta! Aguarde mais um pouco...'
+      this.render()
+    }, 6000)
+  }
+
+  setInitialLoadingMessage() {
+    setTimeout(() => {
+      this._message = 'Ainda buscando...';
+      this.render()
+      this.slowConnectionMessage()
+    }, 3000)
   }
 
   render() {
     const renderLoading = `
       <div class="loading">
         <div class="spinner"></div>
+        <div class="message">${this._message}</div>
       </div>
     `
 
@@ -31,10 +49,12 @@ export default class LoadingEl extends HTMLElement {
         display: flex;
         align-items: center;
         justify-content: center;
+        flex-flow: column;
         right: 0;
         left: 0;
         top: 0;
         background: #ffffffd6;
+        margin-bottom: 6px;
       }
 
       @keyframes spin {
@@ -48,6 +68,10 @@ export default class LoadingEl extends HTMLElement {
         width: 50px;
         height: 50px;
         animation: spin 1s linear infinite;
+      }
+
+      .message {
+        margin-top: 6px;
       }
     </style>
     ${loadingEl}
