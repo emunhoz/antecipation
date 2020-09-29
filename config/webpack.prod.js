@@ -105,7 +105,7 @@ module.exports = {
     new BrotliPlugin(),
     new WebpackPwaManifest({
       name: "Antecipation",
-      start_url: "/",
+      start_url: "./src/index.html",
       theme_color: "#16161d",
       display: "standalone",
       short_name: "Antecipation",
