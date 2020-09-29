@@ -1,9 +1,9 @@
 const staticDevCoffee = "antecipation-site-v1"
 const assets = [
     "/",
-    "/index.html",
-    "/index.js",
-    "/styles/global.css"
+    "/src/index.html",
+    "/src/index.js",
+    "/src/styles/global.css"
 ]
 
 self.addEventListener("install", installEvent => {
