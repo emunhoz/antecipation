@@ -11,6 +11,20 @@ export default class HomePage extends HTMLElement {
     this._loading = false
   }
 
+  setLoading(bool) {
+    this.shadowRoot.querySelector('loading-el').dispatchEvent(new CustomEvent('loading', {
+      bubbles: true,
+      detail: bool
+    }))
+  }
+
+  setAlert(show, message) {
+    this.shadowRoot.querySelector('alert-message').dispatchEvent(new CustomEvent('alert-message', {
+      bubbles: true,
+      detail: { show, message }
+    }))
+  }
+
   addInputListener () {
     this.shadow.getElementById('amount').addEventListener('blur', () => {
       this._amount = this.shadowRoot.querySelectorAll('base-input')[0].shadowRoot.querySelector('input').value
@@ -30,10 +44,9 @@ export default class HomePage extends HTMLElement {
 
   async attemptSubmitForm() {
     if (this._amount === 0 || this._installments === 0 || this._mdr === 0) return;
-    this.shadowRoot.querySelector('loading-el').dispatchEvent(new CustomEvent('loading', {
-      bubbles: true,
-      detail: true
-    }));
+    
+    this.setLoading(true)
+    this.setAlert(false, '')
 
     const data = {
       amount: toNumber(this._amount),
