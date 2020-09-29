@@ -108,6 +108,7 @@ export default class HomePage extends HTMLElement {
         <div class="boxs">
           <loading-el></loading-el>
           <div class="wrapper">
+            <alert-message></alert-message>
             <h1 class="main-title">Simule sua Antecipação</h1>
             <base-input id="amount" type="text" mask="money" label="Informe o valor da venda"></base-input>
             <base-input id="installments" type="text" max="12" maxLength="2" label="Em quantas parcelas" helpMessage="Máximo de 12 parcelas"></base-input>

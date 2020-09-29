@@ -115,9 +115,8 @@ module.exports = {
       purpose: "maskable",
       icons: [
         {
-          src: path.resolve("./src/assets/icon/icon.png"),
+          src: path.resolve("./src/favicon.ico"),
           sizes: [96, 128, 192, 256, 384, 512], // multiple sizes
-          type: "image/png"
         },
       ],
     }),
