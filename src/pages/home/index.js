@@ -77,7 +77,6 @@ export default class HomePage extends HTMLElement {
   }
 
   render() {
-    console.log(this._loading)
     this.shadow.innerHTML = `
       <style>
         .main-title {
