@@ -54,17 +54,21 @@ export default class HomePage extends HTMLElement {
       mdr: toNumber(this._mdr)
     }
 
-    const resp = await sendDataSimulation({ ...data })
+    try {
+      const resp = await sendDataSimulation({ ...data })
 
-    this.shadowRoot.querySelector('list-preview-values').dispatchEvent(new CustomEvent('request-data', {
-      bubbles: true,
-      detail: resp.data
-    }));
+      this.shadowRoot.querySelector('list-preview-values').dispatchEvent(new CustomEvent('request-data', {
+        bubbles: true,
+        detail: resp.data
+      }));
+    } catch (error) {
+      this.setLoading(false)
 
-    this.shadowRoot.querySelector('loading-el').dispatchEvent(new CustomEvent('loading', {
-      bubbles: true,
-      detail: false
-    }));
+      if (error.response.status === 408) return this.setAlert(true, `${error.response.data.message}: Tempo de espera excedido! Por favor, tente novamente em alguns mintuos!`)
+      if (error.response.status === 500) return this.setAlert(true, `${error.response.data.message}: Tivemos um erro internamente. Por favor, tente mais tarde!`)
+    }
+
+    this.setLoading(false)
   }
 
   connectedCallback() {
