@@ -105,14 +105,19 @@ module.exports = {
     new BrotliPlugin(),
     new WebpackPwaManifest({
       name: "Antecipation",
+      start_url: "/",
+      theme_color: "#16161d",
+      display: "standalone",
       short_name: "Antecipation",
       description: "My antecipation Web App!",
       background_color: "#ffffff",
       crossorigin: null, //can be null, use-credentials or anonymous
+      purpose: "maskable",
       icons: [
         {
           src: path.resolve("./src/assets/icon/icon.png"),
           sizes: [96, 128, 192, 256, 384, 512], // multiple sizes
+          type: "image/png"
         },
       ],
     }),
