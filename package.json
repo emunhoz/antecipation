@@ -45,6 +45,11 @@
     "core-js": "3",
     "cypress": "^5.3.0"
   },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "cypress"
+    ]
+  },
   "browserslist": [
     "> 1%",
     "not ie <= 9",
