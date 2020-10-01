@@ -21,13 +21,13 @@ export default class AlertMessage extends HTMLElement {
   }
 
   render() {
-    const renderLoading = `
+    const renderMessage = `
       <div class="alert">
         ${this._alert.message}
       </div>
     `
 
-    const loadingEl = this._alert.show ? renderLoading : ''
+    const alertMessage = this._alert.show ? renderMessage : ''
 
     this.shadow.innerHTML = `
     <style>
@@ -39,7 +39,7 @@ export default class AlertMessage extends HTMLElement {
         margin-bottom: 20px;
       }
     </style>
-    ${loadingEl}
+    ${alertMessage}
     `
   }
 }
